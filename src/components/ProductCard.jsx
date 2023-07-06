@@ -7,7 +7,19 @@ const ProductCard = (props) => {
 	const cart = useContext(CartContextComponent);
 	const productQuantity = cart.getProductQuantity(product.id);
 	return (
-		<Card>
+		<Card className="shadow ">
+			{/* <Card.Img
+				variant="top"
+				src={product.productImage}
+				max-width={100}
+				height={"auto"}
+			/> */}
+			<img
+				className="card-img-top  object-fit-fill "
+				src={product.productImage}
+				// width={"100"}
+				height={"220"}
+			/>
 			<Card.Body>
 				<Card.Title>{product.title}</Card.Title>
 				<Card.Text>${product.price}</Card.Text>
