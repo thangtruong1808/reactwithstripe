@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useState } from "react";
+
+import "./App.css";
+import NavbarComponent from "./components/NavbarComponent";
+import { Container } from "react-bootstrap";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Store from "./Pages/Store";
+import Success from "./Pages/Success";
+import Cancel from "./Pages/Cancel";
+import CartProvider from "./CartContextComponent";
+
+//localhost: 3000 -> Home
+//localhost: 3000/success -> Success
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<CartProvider>
+			<Container>
+				<NavbarComponent />
+				<BrowserRouter>
+					<Routes>
+						<Route index element={<Store />} />
+						<Route path="success" element={<Success />} />
+						<Route path="cancel" element={<Cancel />} />
+					</Routes>
+				</BrowserRouter>
+			</Container>
+		</CartProvider>
+	);
 }
 
 export default App;
